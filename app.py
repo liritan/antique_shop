@@ -2,10 +2,10 @@ from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 import json
 from datetime import datetime
- 
+
 app = Flask(__name__)
 CORS(app)
- 
+
 # Данные о товарах (в реальном приложении это будет база данных)
 products = [
     {
@@ -105,26 +105,51 @@ products = [
         "in_stock": True
     }
 ]
- 
+
 # Временное хранилище заказов
 orders = []
- 
+
 @app.route('/')
 def index():
     """Главная страница"""
     return render_template('index.html')
- 
+
+@app.route('/catalog')
+def catalog():
+    """Страница каталога"""
+    return render_template('catalog.html')
+
+@app.route('/cart')
+def cart():
+    """Страница корзины"""
+    return render_template('cart.html')
+
+@app.route('/profile')
+def profile():
+    """Страница личного кабинета"""
+    return render_template('profile.html')
+
+@app.route('/about')
+def about():
+    """Страница о нас"""
+    return render_template('about.html')
+
+@app.route('/contacts')
+def contacts():
+    """Страница контактов"""
+    return render_template('contacts.html')
+
 @app.route('/api/products')
 def get_products():
     """API для получения всех товаров"""
     category = request.args.get('category', 'all')
- 
+    
     if category == 'all':
         return jsonify(products)
     else:
         filtered_products = [p for p in products if p['category'] == category]
         return jsonify(filtered_products)
- 
+
 @app.route('/api/products/<int:product_id>')
 def get_product(product_id):
     """API для получения конкретного товара"""
@@ -133,7 +158,7 @@ def get_product(product_id):
         return jsonify(product)
     else:
         return jsonify({"error": "Товар не найден"}), 404
- 
+
 @app.route('/api/categories')
 def get_categories():
     """API для получения категорий"""
@@ -145,16 +170,16 @@ def get_categories():
         {"id": "books", "name": "Книги"}
     ]
     return jsonify(categories)
- 
+
 @app.route('/api/orders', methods=['POST'])
 def create_order():
     """API для создания заказа"""
     order_data = request.json
- 
+    
     # Валидация данных
     if not order_data or 'items' not in order_data:
         return jsonify({"error": "Некорректные данные заказа"}), 400
- 
+    
     # Создание заказа
     order = {
         "id": len(orders) + 1,
@@ -164,23 +189,23 @@ def create_order():
         "status": "pending",
         "created_at": datetime.now().isoformat()
     }
- 
+    
     orders.append(order)
- 
+    
     return jsonify({
         "success": True,
         "order_id": order["id"],
         "message": "Заказ успешно создан"
     }), 201
- 
+
 @app.route('/api/search')
 def search_products():
     """API для поиска товаров"""
     query = request.args.get('q', '').lower()
- 
+    
     if not query:
         return jsonify([])
- 
+    
     results = []
     for product in products:
         if (query in product['title'].lower() or 
@@ -188,20 +213,20 @@ def search_products():
             query in product['era'].lower() or 
             query in product['material'].lower()):
             results.append(product)
- 
+    
     return jsonify(results)
- 
+
 @app.route('/api/featured')
 def get_featured_products():
     """API для получения избранных товаров"""
     featured = [p for p in products if p['in_stock']][:4]
     return jsonify(featured)
- 
+
 @app.route('/health')
 def health_check():
     """Проверка здоровья сервиса"""
     return jsonify({"status": "healthy", "timestamp": datetime.now().isoformat()})
- 
+
 if __name__ == '__main__':
     print("Запуск антикварного магазина 'Времена'...")
     print("Откройте http://localhost:5000 в браузере")
