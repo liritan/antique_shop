@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - Антикварный магазин "Времена"</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="/" style="text-decoration: none; color: inherit;">Времена</a></h1>
+                    <p>Антикварный магазин</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/catalog">Каталог</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
+                    <li><a href="/cart" class="cart-link">Корзина <span id="cart-count">0</span></a></li>
+                    <li><a href="/profile" class="active">Личный кабинет</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-bottom: 4rem;">
+        <div class="container">
+            <div class="profile-container">
+                <aside class="profile-sidebar">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="/static/images/default-avatar.jpg" alt="Аватар">
+                        </div>
+                        <h3>Иван Петров</h3>
+                        <p>ivan.petrov@example.com</p>
+                    </div>
+                    
+                    <nav class="profile-nav">
+                        <ul>
+                            <li><a href="#personal" class="nav-link active" onclick="showSection('personal')">Личные данные</a></li>
+                            <li><a href="#orders" class="nav-link" onclick="showSection('orders')">Мои заказы</a></li>
+                            <li><a href="#favorites" class="nav-link" onclick="showSection('favorites')">Избранное</a></li>
+                            <li><a href="#addresses" class="nav-link" onclick="showSection('addresses')">Адреса доставки</a></li>
+                            <li><a href="#settings" class="nav-link" onclick="showSection('settings')">Настройки</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <main class="profile-content">
+                    <!-- Личные данные -->
+                    <section id="personal" class="profile-section active">
+                        <h2>Личные данные</h2>
+                        <form class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">Имя</label>
+                                    <input type="text" id="first-name" value="Иван">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Фамилия</label>
+                                    <input type="text" id="last-name" value="Петров">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" value="ivan.petrov@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон</label>
+                                <input type="tel" id="phone" value="+7 (999) 123-45-67">
+                            </div>
+                            <div class="form-group">
+                                <label for="birthdate">Дата рождения</label>
+                                <input type="date" id="birthdate" value="1985-06-15">
+                            </div>
+                            <button type="submit" class="save-btn">Сохранить изменения</button>
+                        </form>
+                    </section>
+
+                    <!-- Мои заказы -->
+                    <section id="orders" class="profile-section">
+                        <h2>Мои заказы</h2>
+                        <div class="orders-list">
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <div>
+                                        <h4>Заказ #1234</h4>
+                                        <p class="order-date">15 января 2024</p>
+                                    </div>
+                                    <div class="order-status delivered">Доставлен</div>
+                                </div>
+                                <div class="order-items">
+                                    <div class="order-item">
+                                        <img src="/static/images/commode.jpg" alt="Товар">
+                                        <div class="item-info">
+                                            <h5>Антикварный комод</h5>
+                                            <p>Количество: 1</p>
+                                        </div>
+                                        <div class="item-price">125 000 ₽</div>
+                                    </div>
+                                </div>
+                                <div class="order-total">
+                                    <span>Итого:</span>
+                                    <span>125 000 ₽</span>
+                                </div>
+                            </div>
+
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <div>
+                                        <h4>Заказ #1235</h4>
+                                        <p class="order-date">20 января 2024</p>
+                                    </div>
+                                    <div class="order-status processing">В обработке</div>
+                                </div>
+                                <div class="order-items">
+                                    <div class="order-item">
+                                        <img src="/static/images/brooch.jpg" alt="Товар">
+                                        <div class="item-info">
+                                            <h5>Золотая брошь</h5>
+                                            <p>Количество: 1</p>
+                                        </div>
+                                        <div class="item-price">85 000 ₽</div>
+                                    </div>
+                                </div>
+                                <div class="order-total">
+                                    <span>Итого:</span>
+                                    <span>85 000 ₽</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Избранное -->
+                    <section id="favorites" class="profile-section">
+                        <h2>Избранное</h2>
+                        <div class="favorites-grid">
+                            <div class="favorite-item">
+                                <img src="/static/images/painting.jpg" alt="Товар">
+                                <div class="favorite-info">
+                                    <h4>Картина маслом</h4>
+                                    <p>Конец XVIII века</p>
+                                    <p class="price">320 000 ₽</p>
+                                </div>
+                                <button class="remove-favorite" onclick="removeFavorite(this)">×</button>
+                            </div>
+                            <div class="favorite-item">
+                                <img src="/static/images/clock.jpg" alt="Товар">
+                                <div class="favorite-info">
+                                    <h4>Антикварные часы</h4>
+                                    <p>Конец XIX века</p>
+                                    <p class="price">95 000 ₽</p>
+                                </div>
+                                <button class="remove-favorite" onclick="removeFavorite(this)">×</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Адреса доставки -->
+                    <section id="addresses" class="profile-section">
+                        <h2>Адреса доставки</h2>
+                        <div class="addresses-list">
+                            <div class="address-card">
+                                <div class="address-header">
+                                    <h4>Основной адрес</h4>
+                                    <div class="address-actions">
+                                        <button class="edit-btn">Редактировать</button>
+                                        <button class="delete-btn">Удалить</button>
+                                    </div>
+                                </div>
+                                <p>г. Москва, ул. Арбат, д. 15, кв. 42</p>
+                                <p>Иван Петров, +7 (999) 123-45-67</p>
+                            </div>
+                        </div>
+                        <button class="add-address-btn" onclick="addAddress()">+ Добавить адрес</button>
+                    </section>
+
+                    <!-- Настройки -->
+                    <section id="settings" class="profile-section">
+                        <h2>Настройки</h2>
+                        <div class="settings-form">
+                            <div class="setting-item">
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <div class="setting-info">
+                                    <h4>Email уведомления</h4>
+                                    <p>Получать уведомления о статусе заказов</p>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                                <div class="setting-info">
+                                    <h4>SMS уведомления</h4>
+                                    <p>Получать SMS о доставке</p>
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <div class="setting-info">
+                                    <h4>Новостная рассылка</h4>
+                                    <p>Информация о новых поступлениях</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Антикварный магазин "Времена". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/storage.js"></script>
+    <script src="/static/js/profile.js"></script>
+</body>
+</html>

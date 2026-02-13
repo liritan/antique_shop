@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Антикварный магазин "Времена"</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="/" style="text-decoration: none; color: inherit;">Времена</a></h1>
+                    <p>Антикварный магазин</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/catalog">Каталог</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
+                    <li><a href="/cart" class="active">Корзина <span id="cart-count">0</span></a></li>
+                    <li><a href="/profile">Личный кабинет</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-bottom: 4rem;">
+        <div class="container">
+            <h1 style="font-family: 'Playfair Display', serif; color: #2c1810; margin-bottom: 2rem;">Корзина</h1>
+            
+            <div id="cart-empty" style="text-align: center; padding: 60px 0; display: none;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🛒</div>
+                <h2 style="color: #666; margin-bottom: 1rem;">Ваша корзина пуста</h2>
+                <p style="color: #999; margin-bottom: 2rem;">Добавьте товары из нашего каталога</p>
+                <a href="/catalog" class="cta-button">Перейти в каталог</a>
+            </div>
+
+            <div id="cart-content" style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem;">
+                <div class="cart-items">
+                    <!-- Товары корзины -->
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h3>Итого</h3>
+                        <div class="summary-line">
+                            <span>Товары:</span>
+                            <span id="subtotal">0 ₽</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Доставка:</span>
+                            <span id="shipping">0 ₽</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>К оплате:</span>
+                            <span id="total">0 ₽</span>
+                        </div>
+                        <button class="checkout-btn" onclick="proceedToCheckout()">Оформить заказ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Антикварный магазин "Времена". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/storage.js"></script>
+    <script src="/static/js/cart.js"></script>
+</body>
+</html>

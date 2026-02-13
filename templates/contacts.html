@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Антикварный магазин "Времена"</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="/" style="text-decoration: none; color: inherit;">Времена</a></h1>
+                    <p>Антикварный магазин</p>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/catalog">Каталог</a></li>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/contacts" class="active">Контакты</a></li>
+                    <li><a href="/cart" class="cart-link">Корзина <span id="cart-count">0</span></a></li>
+                    <li><a href="/profile">Личный кабинет</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main style="padding-bottom: 4rem;">
+        <!-- Hero секция -->
+        <section class="contacts-hero">
+            <div class="container">
+                <div class="contacts-hero-content">
+                    <h1>Контакты</h1>
+                    <p>Мы всегда рады видеть вас в нашем магазине и ответить на ваши вопросы</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основная контактная информация -->
+        <section class="main-contacts">
+            <div class="container">
+                <h2 class="section-title">Как нас найти</h2>
+                <div class="contacts-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h3>Главный магазин</h3>
+                        <p>г. Москва, ул. Арбат, д. 15</p>
+                        <p>Метро: Арбатская, Смоленская</p>
+                        <p>Вход со стороны Арбата</p>
+                        <div class="map-placeholder">
+                            <p>🗺️ Интерактивная карта</p>
+                            <small>Здесь будет встроена карта Яндекса</small>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <h3>Телефоны</h3>
+                        <p><strong>Основной:</strong> +7 (495) 123-45-67</p>
+                        <p><strong>Экспертиза:</strong> +7 (495) 123-45-68</p>
+                        <p><strong>Реставрация:</strong> +7 (495) 123-45-69</p>
+                        <p><strong>WhatsApp:</strong> +7 (900) 123-45-67</p>
+                        <p><strong>Telegram:</strong> @vremena_antik</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <p><strong>Общие вопросы:</strong> info@vremena-antik.ru</p>
+                        <p><strong>Экспертиза:</strong> expert@vremena-antik.ru</p>
+                        <p><strong>Реставрация:</strong> restore@vremena-antik.ru</p>
+                        <p><strong>Партнерство:</strong> partners@vremena-antik.ru</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">🕐</div>
+                        <h3>Часы работы</h3>
+                        <p><strong>Понедельник - Суббота:</strong></p>
+                        <p>10:00 - 19:00</p>
+                        <p><strong>Воскресенье:</strong></p>
+                        <p>11:00 - 17:00</p>
+                        <p><strong>Выходные:</strong> 1 января, 9 мая</p>
+                        <p><em>Экспертиза и реставрация по предварительной записи</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section class="contact-form-section">
+            <div class="container">
+                <h2 class="section-title">Напишите нам</h2>
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Ваше имя *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Телефон</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Тема обращения *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Выберите тему</option>
+                                    <option value="general">Общий вопрос</option>
+                                    <option value="expertise">Экспертиза</option>
+                                    <option value="restoration">Реставрация</option>
+                                    <option value="purchase">Покупка</option>
+                                    <option value="consignment">Консигнация</option>
+                                    <option value="partnership">Партнерство</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Опишите ваш вопрос или предложение..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="files">Прикрепить файлы</label>
+                            <input type="file" id="files" name="files" multiple accept="image/*,.pdf,.doc,.docx">
+                            <small>Максимальный размер файла: 5 МБ. Допустимые форматы: JPG, PNG, PDF, DOC, DOCX</small>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <span>Я согласен с <a href="/privacy">политикой конфиденциальности</a> и даю согласие на обработку персональных данных *</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-btn">Отправить сообщение</button>
+                    </form>
+                    <div class="contact-info-side">
+                        <div class="info-card">
+                            <h3>Почему стоит обратиться к нам?</h3>
+                            <ul>
+                                <li>✅ Более 25 лет опыта на рынке антиквариата</li>
+                                <li>✅ Сертифицированные эксперты международного уровня</li>
+                                <li>✅ Гарантия подлинности всех предметов</li>
+                                <li>✅ Полная юридическая чистота сделок</li>
+                                <li>✅ Конфиденциальность и безопасность</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h3>Время ответа</h3>
+                            <p><strong>Email:</strong> в течение 24 часов</p>
+                            <p><strong>Телефон:</strong> с 10:00 до 19:00 (МСК)</p>
+                            <p><strong>WhatsApp/Telegram:</strong> в течение 2 часов</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Социальные сети</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link">📘 Facebook</a>
+                                <a href="#" class="social-link">📷 Instagram</a>
+                                <a href="#" class="social-link">🎨 VKontakte</a>
+                                <a href="#" class="social-link">📺 YouTube</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Филиалы -->
+        <section class="branches-section">
+            <div class="container">
+                <h2 class="section-title">Наши филиалы</h2>
+                <div class="branches-grid">
+                    <div class="branch-card">
+                        <h3>Санкт-Петербург</h3>
+                        <p>📍 Невский проспект, д. 45</p>
+                        <p>📞 +7 (812) 234-56-78</p>
+                        <p>🕐 Вт-Вс: 11:00 - 18:00</p>
+                        <p>📧 spb@vremena-antik.ru</p>
+                        <p><em>Специализация: императорский антиквариат, серебро</em></p>
+                    </div>
+                    <div class="branch-card">
+                        <h3>Екатеринбург</h3>
+                        <p>📍 ул. Малышева, д. 101</p>
+                        <p>📞 +7 (343) 345-67-89</p>
+                        <p>🕐 Пн-Сб: 10:00 - 19:00</p>
+                        <p>📧 ekb@vremena-antik.ru</p>
+                        <p><em>Специализация: уральские мастера, золото</em></p>
+                    </div>
+                    <div class="branch-card">
+                        <h3>Сочи</h3>
+                        <p>📍 ул. Навагинская, д. 6</p>
+                        <p>📞 +7 (862) 456-78-90</p>
+                        <p>🕐 Ежедневно: 10:00 - 20:00</p>
+                        <p>📧 sochi@vremena-antik.ru</p>
+                        <p><em>Специализация: морской антиквариат, карты</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Как вы гарантируете подлинность антиквариата?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Каждый предмет проходит многоступенчатую экспертизу: сначала наши внутренние эксперты, затем независимые эксперты из авторитетных организаций. Мы предоставляем полное заключение о подлинности с фотографиями и описанием всех характеристик предмета.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Осуществляете ли вы доставку по России и за границу?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, мы осуществляем доставку по всей России и в более чем 50 стран мира. Доставка осуществляется специализированными компаниями с полной страховкой. Для крупных предметов организуем белогоручную доставку и установку.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Можно ли продать вам свой антикварный предмет?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, мы выкупаем антикварные предметы и принимаем их на комиссию. Для оценки присылайте фотографии на наш email или приезжайте с предметом в магазин. Экспертиза выкупа бесплатная.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Предоставляете ли вы сертификаты на товары?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>На каждый предмет мы предоставляем подробный сертификат, включающий: описание, историю происхождения, результаты экспертизы, оценочную стоимость, фотографии. Сертификат подписывается нашим главным экспертом.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Работаете ли вы с юридическими лицами?</h3>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, мы работаем с юридическими лицами. Предоставляем все необходимые документы: счета-фактуры, акты, договоры. Осуществляем комплектование интерьеров для отелей, ресторанов, офисов.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Дополнительная информация -->
+        <section class="additional-info">
+            <div class="container">
+                <h2 class="section-title">Дополнительная информация</h2>
+                <div class="info-grid">
+                    <div class="info-block">
+                        <h3>Оплата</h3>
+                        <ul>
+                            <li>Наличный расчет в магазине</li>
+                            <li>Банковские карты (Visa, Mastercard, МИР)</li>
+                            <li>Банковский перевод</li>
+                            <li>Рассрочка на 6 месяцев (при покупке от 100 000 ₽)</li>
+                            <li>Trade-in (обмен на другие предметы)</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>Доставка</h3>
+                        <ul>
+                            <li>Курьерская доставка по Москве (в день заказа)</li>
+                            <li>Транспортные компании по России (2-5 дней)</li>
+                            <li>Международная доставка (DHL, FedEx)</li>
+                            <li>Белогоручная доставка мебели</li>
+                            <li>Упаковка и страховка включены</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>Гарантии</h3>
+                        <ul>
+                            <li>Гарантия подлинности - пожизненная</li>
+                            <li>Возврат товара в течение 14 дней</li>
+                            <li>Сервисное обслуживание в течение года</li>
+                            <li>Бесплатная консервация при хранении</li>
+                            <li>Приоритетное обслуживание постоянных клиентов</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Антикварный магазин "Времена". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/contacts.js"></script>
+</body>
+</html>
