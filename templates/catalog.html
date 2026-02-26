@@ -1,188 +1,148 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог - Антикварный магазин "Времена"</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог - Антикварный магазин "Времена"</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <h1><a href="/" style="text-decoration: none; color: inherit;">Времена</a></h1>
-                    <p>Антикварный магазин</p>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/catalog" class="active">Каталог</a></li>
-                    <li><a href="/about">О нас</a></li>
-                    <li><a href="/contacts">Контакты</a></li>
-                    <li><a href="/cart" class="cart-link">Корзина <span id="cart-count">0</span></a></li>
-                    <li><a href="/profile">Личный кабинет</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <main style="padding-bottom: 4rem;">
-        <div class="container">
-            <div class="catalog-page">
-                <div class="catalog-sidebar">
-                    <div class="filters-section">
-                        <h3>Фильтры</h3>
-                        
-                        <div class="filter-group">
-                            <h4>Категория</h4>
-                            <div class="checkbox-group">
-                                <label>
-                                    <input type="checkbox" name="category" value="all" checked>
-                                    <span>Все товары</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="category" value="furniture">
-                                    <span>Мебель</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="category" value="jewelry">
-                                    <span>Ювелирные изделия</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="category" value="art">
-                                    <span>Искусство</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="category" value="books">
-                                    <span>Книги</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="filter-group">
-                            <h4>Цена</h4>
-                            <div class="price-range">
-                                <input type="number" id="min-price" placeholder="От" min="0">
-                                <input type="number" id="max-price" placeholder="До" min="0">
-                            </div>
-                        </div>
-
-                        <div class="filter-group">
-                            <h4>Эпоха</h4>
-                            <div class="checkbox-group">
-                                <label>
-                                    <input type="checkbox" name="era" value="XVII век">
-                                    <span>XVII век</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="era" value="XVIII век">
-                                    <span>XVIII век</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="era" value="XIX век">
-                                    <span>XIX век</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="era" value="Начало XX века">
-                                    <span>Начало XX века</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="era" value="Конец XX века">
-                                    <span>Конец XX века</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="filter-group">
-                            <h4>Наличие</h4>
-                            <div class="checkbox-group">
-                                <label>
-                                    <input type="checkbox" name="availability" value="in_stock" checked>
-                                    <span>В наличии</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <button class="apply-filters-btn" onclick="applyFilters()">Применить фильтры</button>
-                        <button class="reset-filters-btn" onclick="resetFilters()">Сбросить</button>
-                    </div>
-                </div>
-
-                <div class="catalog-content">
-                    <div class="catalog-header">
-                        <h2>Каталог товаров</h2>
-                        <div class="view-sort">
-                            <div class="view-options">
-                                <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                        <rect x="0" y="0" width="8" height="8"/>
-                                        <rect x="12" y="0" width="8" height="8"/>
-                                        <rect x="0" y="12" width="8" height="8"/>
-                                        <rect x="12" y="12" width="8" height="8"/>
-                                    </svg>
-                                </button>
-                                <button class="view-btn" data-view="list" onclick="changeView('list')">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                        <rect x="0" y="2" width="20" height="3"/>
-                                        <rect x="0" y="8.5" width="20" height="3"/>
-                                        <rect x="0" y="15" width="20" height="3"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="sort-options">
-                                <select id="sort-select" onchange="sortProducts()">
-                                    <option value="default">Сортировка</option>
-                                    <option value="price-asc">Цена: по возрастанию</option>
-                                    <option value="price-desc">Цена: по убыванию</option>
-                                    <option value="name-asc">Название: А-Я</option>
-                                    <option value="name-desc">Название: Я-А</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="search-bar">
-                        <input type="text" id="search-input" placeholder="Поиск товаров..." onkeyup="searchProducts()">
-                        <button onclick="searchProducts()">🔍</button>
-                    </div>
-
-                    <div class="results-info">
-                        <span id="results-count">Найдено товаров: 0</span>
-                    </div>
-
-                    <div class="products-grid" id="products-grid">
-                        <!-- Товары будут загружены через JavaScript -->
-                    </div>
-
-                    <div class="pagination" id="pagination">
-                        <!-- Пагинация будет добавлена динамически -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Антикварный магазин "Времена". Все права защищены.</p>
-        </div>
-    </footer>
-
-    <!-- Модальное окно товара -->
-    <div id="product-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modal-product-details"></div>
-        </div>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <h1><a href="/" style="text-decoration:none; color:inherit;">Времена</a></h1>
+        <p>Антикварный магазин</p>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="/">Главная</a></li>
+        <li><a href="/catalog" class="active">Каталог</a></li>
+        <li><a href="/about">О нас</a></li>
+        <li><a href="/contacts#services">Услуги</a></li>
+        <li><a href="/contacts">Контакты</a></li>
+        <li><a href="/cart" class="cart-link">Корзина <span id="cart-count">0</span></a></li>
+        <li><a href="/profile">Личный кабинет</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
+  </nav>
+</header>
 
-    <script src="/static/js/storage.js"></script>
-    <script src="/static/js/catalog.js"></script>
+<main style="padding-bottom: 4rem;">
+  <div class="container">
+    <div class="catalog-page">
+      <div class="catalog-sidebar">
+        <div class="filters-section">
+          <h3>Фильтры</h3>
+
+          <div class="filter-group">
+            <h4>Категория</h4>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="category" value="all" checked><span>Все товары</span></label>
+              <label><input type="checkbox" name="category" value="furniture"><span>Мебель</span></label>
+              <label><input type="checkbox" name="category" value="jewelry"><span>Ювелирные изделия</span></label>
+              <label><input type="checkbox" name="category" value="art"><span>Искусство</span></label>
+              <label><input type="checkbox" name="category" value="books"><span>Книги</span></label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Цена</h4>
+            <div class="price-range">
+              <input type="number" id="min-price" placeholder="От" min="0">
+              <input type="number" id="max-price" placeholder="До" min="0">
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Эпоха</h4>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="era" value="XVII век"><span>XVII век</span></label>
+              <label><input type="checkbox" name="era" value="XVIII век"><span>XVIII век</span></label>
+              <label><input type="checkbox" name="era" value="XIX век"><span>XIX век</span></label>
+              <label><input type="checkbox" name="era" value="Начало XX века"><span>Начало XX века</span></label>
+              <label><input type="checkbox" name="era" value="Конец XX века"><span>Конец XX века</span></label>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Наличие</h4>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="availability" value="in_stock" checked><span>В наличии</span></label>
+            </div>
+          </div>
+
+          <button class="apply-filters-btn" onclick="applyFilters()">Применить фильтры</button>
+          <button class="reset-filters-btn" onclick="resetFilters()">Сбросить</button>
+        </div>
+      </div>
+
+      <div class="catalog-content">
+        <div class="catalog-header">
+          <h2>Каталог товаров</h2>
+          <div class="view-sort">
+            <div class="view-options">
+              <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <rect x="0" y="0" width="8" height="8"/><rect x="12" y="0" width="8" height="8"/>
+                  <rect x="0" y="12" width="8" height="8"/><rect x="12" y="12" width="8" height="8"/>
+                </svg>
+              </button>
+              <button class="view-btn" data-view="list" onclick="changeView('list')">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <rect x="0" y="2" width="20" height="3"/><rect x="0" y="8.5" width="20" height="3"/><rect x="0" y="15" width="20" height="3"/>
+                </svg>
+              </button>
+            </div>
+            <div class="sort-options">
+              <select id="sort-select" onchange="sortProducts()">
+                <option value="default">Сортировка</option>
+                <option value="price-asc">Цена: по возрастанию</option>
+                <option value="price-desc">Цена: по убыванию</option>
+                <option value="name-asc">Название: А-Я</option>
+                <option value="name-desc">Название: Я-А</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Поиск товаров..." onkeyup="searchProducts()">
+          <button onclick="searchProducts()">🔍</button>
+        </div>
+
+        <div class="results-info">
+          <span id="results-count">Найдено товаров: 0</span>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+          <p style="opacity:.7;">Загрузка товаров…</p>
+        </div>
+
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Антикварный магазин "Времена". Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- Модальное окно товара -->
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div id="modal-product-details"></div>
+  </div>
+</div>
+
+<script src="/static/js/storage.js"></script>
+<script src="/static/js/catalog.js"></script>
 </body>
 </html>

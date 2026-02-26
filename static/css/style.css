@@ -1763,3 +1763,35 @@ input:checked + .slider:before {
         margin-left: 0;
     }
 }
+html, body {
+    height: 100%;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  
+    /* у тебя уже есть padding-top: 80px; оставь его */
+  }
+  
+  /* main занимает всё свободное место и прижимает футер вниз */
+  main {
+    flex: 1 0 auto;
+  }
+  
+  /* футер не растягиваем */
+  .footer {
+    flex-shrink: 0;
+  
+    background: #2c1810;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+  
+
+    margin-top: 0;
+  }
+  #services {
+    scroll-margin-top: 100px; 
+  }

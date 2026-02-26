@@ -2,3 +2,10 @@ Flask==2.3.3
 Flask-CORS==4.0.0
 Werkzeug==2.3.7
 gunicorn==21.2.0
+
+
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Login
+psycopg2-binary
+python-dotenv

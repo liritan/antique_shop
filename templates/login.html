@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вход — Времена</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/login.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <h1><a href="/" style="text-decoration: none; color: inherit;">Времена</a></h1>
+        <p>Антикварный магазин</p>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="/">Главная</a></li>
+        <li><a href="/catalog">Каталог</a></li>
+        <li><a href="/about">О нас</a></li>
+        <li><a href="/contacts#services">Услуги</a></li>
+        <li><a href="/contacts">Контакты</a></li>
+        <li><a href="/cart" class="cart-link">Корзина <span id="cart-count">0</span></a></li>
+        <li><a href="/profile">Личный кабинет</a></li>
+      </ul>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+
+<main class="auth-page">
+  <div class="container auth-container">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <h1 class="auth-title">Добро пожаловать</h1>
+        <p class="auth-subtitle">Войдите в аккаунт или создайте новый</p>
+      </div>
+
+      <!-- tabs -->
+      <div class="auth-tabs" role="tablist" aria-label="Авторизация">
+        <button class="auth-tab active" id="tab-login" type="button" role="tab" aria-selected="true" aria-controls="panel-login">
+          Вход
+        </button>
+        <button class="auth-tab" id="tab-register" type="button" role="tab" aria-selected="false" aria-controls="panel-register">
+          Регистрация
+        </button>
+      </div>
+
+      <!-- message -->
+      <div id="auth-message" class="auth-message" style="display:none;"></div>
+
+      <!-- panels -->
+      <section id="panel-login" class="auth-panel active" role="tabpanel" aria-labelledby="tab-login">
+        <form id="loginForm" class="auth-form">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" required placeholder="you@example.com" autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Пароль</label>
+            <input id="loginPassword" type="password" required placeholder="••••••••" autocomplete="current-password"/>
+          </div>
+
+          <button type="submit" class="cta-button auth-submit">Войти</button>
+
+          <p class="auth-hint">
+            Нет аккаунта?
+            <button type="button" class="auth-link" data-switch="register">Создать</button>
+          </p>
+        </form>
+      </section>
+
+      <section id="panel-register" class="auth-panel" role="tabpanel" aria-labelledby="tab-register">
+        <form id="registerForm" class="auth-form">
+          <div class="form-row auth-row">
+            <div class="form-group">
+              <label for="regFirstName">Имя</label>
+              <input id="regFirstName" type="text" placeholder="Иван" autocomplete="given-name"/>
+            </div>
+            <div class="form-group">
+              <label for="regLastName">Фамилия</label>
+              <input id="regLastName" type="text" placeholder="Петров" autocomplete="family-name"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input id="regEmail" type="email" required placeholder="you@example.com" autocomplete="email"/>
+          </div>
+
+          <div class="form-group">
+            <label for="regPassword">Пароль</label>
+            <input id="regPassword" type="password" required placeholder="минимум 6 символов" autocomplete="new-password"/>
+          </div>
+
+          <button type="submit" class="cta-button auth-submit">Создать аккаунт</button>
+
+          <p class="auth-hint">
+            Уже есть аккаунт?
+            <button type="button" class="auth-link" data-switch="login">Войти</button>
+          </p>
+        </form>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Антикварный магазин "Времена". Все права защищены.</p>
+  </div>
+</footer>
+
+<script src="/static/js/storage.js"></script>
+<script src="/static/js/login.js"></script>
+</body>
+</html>
