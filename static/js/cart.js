@@ -117,12 +117,6 @@ function renderCart() {
             ${era ? `<p class="cart-item-era">${escapeHtml(era)}</p>` : ``}
             ${material ? `<p class="cart-item-material">${escapeHtml(material)}</p>` : ``}
 
-            <div class="quantity-controls">
-              <button class="quantity-btn" disabled>-</button>
-              <input type="number" value="${qty}" min="1" max="1" readonly class="quantity-input">
-              <button class="quantity-btn" disabled>+</button>
-            </div>
-
             <p style="opacity:.75; font-size:.9rem; margin-top:.5rem;">
               Антикварные товары доступны в единственном экземпляре.
             </p>
