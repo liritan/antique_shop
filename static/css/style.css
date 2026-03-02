@@ -478,13 +478,17 @@ main {
 .price-range {
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .price-range input {
-    flex: 1;
-    padding: 0.5rem;
+    width: 90px;
+    max-width: 45%;
+    padding: 0.4rem;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
 }
 
 .apply-filters-btn, .reset-filters-btn {
@@ -1284,7 +1288,7 @@ input:checked + .slider:before {
     content: '';
     position: absolute;
     left: 60px;
-    top: 30px;
+    top: 80px;
     bottom: -30px;
     width: 2px;
     background: #d4af37;
