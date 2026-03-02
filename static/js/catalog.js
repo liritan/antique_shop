@@ -118,7 +118,6 @@ function setupEventListeners() {
   }
 }
 
-// ---------- render ----------
 function renderProducts() {
   const grid = document.getElementById('products-grid');
   if (!grid) return;
@@ -129,36 +128,48 @@ function renderProducts() {
 
   if (currentView === 'grid') {
     grid.className = 'products-grid';
-    grid.innerHTML = pageProducts.map(p => `
-      <div class="product-card" data-id="${p.id}">
-        <img src="${getImage(p)}" alt="${p.title}" class="product-image">
-        <div class="product-info">
-          <h3 class="product-title">${p.title}</h3>
-          <p class="product-era">${getEra(p)}</p>
-          <p class="product-price">${formatPrice(p.price)} ₽</p>
-          <button class="add-to-cart" onclick="addToCart(${p.id})">
-            В корзину
-          </button>
+    grid.innerHTML = pageProducts.map(p => {
+      const inStock = isInStock(p);
+      const stockClass = inStock ? '' : 'out-of-stock';
+      
+      return `
+        <div class="product-card ${stockClass}" data-id="${p.id}">
+          <img src="${getImage(p)}" alt="${p.title}" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">${p.title}</h3>
+            <p class="product-era">${getEra(p)}</p>
+            <p class="product-price">${formatPrice(p.price)} ₽</p>
+            <button class="add-to-cart" onclick="addToCart(${p.id})" ${!inStock ? 'disabled' : ''}>
+              ${inStock ? 'В корзину' : 'Нет в наличии'}
+            </button>
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   } else {
     grid.className = 'products-list';
-    grid.innerHTML = pageProducts.map(p => `
-      <div class="product-list-item" data-id="${p.id}">
-        <img src="${getImage(p)}" alt="${p.title}" class="product-list-image">
-        <div class="product-list-info">
-          <h3 class="product-title">${p.title}</h3>
-          <p class="product-era">${getEra(p)}</p>
-          <p class="product-description">${p.description || ""}</p>
-          <p class="product-price">${formatPrice(p.price)} ₽</p>
+    grid.innerHTML = pageProducts.map(p => {
+      const inStock = isInStock(p);
+      const stockClass = inStock ? '' : 'out-of-stock';
+      
+      return `
+        <div class="product-list-item ${stockClass}" data-id="${p.id}">
+          <img src="${getImage(p)}" alt="${p.title}" class="product-list-image">
+          <div class="product-list-info">
+            <h3 class="product-title">${p.title}</h3>
+            <p class="product-era">${getEra(p)}</p>
+            <p class="product-description">${p.description || ""}</p>
+            <p class="product-price">${formatPrice(p.price)} ₽</p>
+          </div>
+          <div class="product-list-actions">
+            <button class="view-details" onclick="showProductModal(${p.id})" ${!inStock ? 'disabled' : ''}>Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart(${p.id})" ${!inStock ? 'disabled' : ''}>
+              ${inStock ? 'В корзину' : 'Нет в наличии'}
+            </button>
+          </div>
         </div>
-        <div class="product-list-actions">
-          <button class="view-details" onclick="showProductModal(${p.id})">Подробнее</button>
-          <button class="add-to-cart" onclick="addToCart(${p.id})">В корзину</button>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 
   document.querySelectorAll('.product-card, .product-list-item').forEach(card => {
@@ -173,8 +184,6 @@ function renderProducts() {
   updateResultsCount();
   renderPagination();
 }
-
-// ---------- filters/search/sort ----------
 function applyFilters() {
   const categories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
   const eras = Array.from(document.querySelectorAll('input[name="era"]:checked')).map(cb => cb.value);
@@ -183,7 +192,7 @@ function applyFilters() {
   const maxPriceValue = document.getElementById('max-price').value;
   const maxPrice = maxPriceValue ? parseInt(maxPriceValue) : Infinity;
 
-  const inStockOnly = document.querySelector('input[name="availability"]:checked')?.value === 'in_stock';
+  const inStockOnly = document.querySelector('input[name="availability"]:checked') !== null;
 
   filteredProducts = products.filter(p => {
     const pCategory = p.category ?? p.category_slug ?? (p.category?.slug ?? null);
@@ -202,11 +211,10 @@ function applyFilters() {
 
   currentPage = 1;
   renderProducts();
-}
-
+ }
 function resetFilters() {
   document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-    if (cb.value === 'all' || cb.value === 'in_stock') cb.checked = true;
+    if (cb.value === 'all') cb.checked = true;
     else cb.checked = false;
   });
   document.getElementById('min-price').value = '';
@@ -216,6 +224,18 @@ function resetFilters() {
   currentPage = 1;
   renderProducts();
 }
+// function resetFilters() {
+//   document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+//     if (cb.value === 'all' || cb.value === 'in_stock') cb.checked = true;
+//     else cb.checked = false;
+//   });
+//   document.getElementById('min-price').value = '';
+//   document.getElementById('max-price').value = '';
+
+//   filteredProducts = [...products];
+//   currentPage = 1;
+//   renderProducts();
+// }
 
 function searchProducts() {
   const query = document.getElementById('search-input').value.toLowerCase();

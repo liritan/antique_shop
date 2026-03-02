@@ -33,7 +33,7 @@ class User(UserMixin, db.Model):
     middle_name = db.Column(db.String(80), default="")
     phone = db.Column(db.String(32), default="", index=True)
     birthdate = db.Column(db.Date)  # nullable=True by default
-
+    avatar_url = db.Column(db.String(255), default="", nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     orders = db.relationship("Order", back_populates="user", lazy=True)
@@ -53,6 +53,7 @@ class User(UserMixin, db.Model):
             "middle_name": self.middle_name or "",
             "phone": self.phone or "",
             "birthdate": self.birthdate.isoformat() if self.birthdate else None,
+            "avatar_url": self.avatar_url or "",
             "created_at": self.created_at.isoformat() if self.created_at else None,
         }
 

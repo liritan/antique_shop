@@ -1519,6 +1519,7 @@ input:checked + .slider:before {
 .contact-card h3 {
     color: #2c1810;
     margin-bottom: 1rem;
+    font-size: 23px;
     font-family: 'Playfair Display', serif;
 }
 
@@ -1795,3 +1796,373 @@ html, body {
   #services {
     scroll-margin-top: 100px; 
   }
+
+  /* Стили для блока "Услуги" на странице "О нас" */
+
+/* CTA Section (Call to Action) - секция с призывом к услугам */
+.cta-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f5f2 0%, #fff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.cta-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-section .section-title {
+    margin-bottom: 1.5rem;
+    color: #2c1810;
+    font-size: 2.5rem;
+}
+
+.cta-section .section-title::after {
+    margin: 1rem auto;
+}
+
+.cta-section p {
+    max-width: 760px;
+    margin: 0 auto 2rem;
+    color: #666;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    position: relative;
+    padding: 0 1rem;
+}
+
+/* Стили для кнопки "Перейти к услугам" */
+.cta-section .submit-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+    color: #2c1810;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-section .submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.cta-section .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+}
+
+.cta-section .submit-btn:hover::before {
+    left: 100%;
+}
+
+.cta-section .submit-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Добавляем иконки к тексту услуг (опционально) */
+.cta-section .services-preview {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 2rem auto 2.5rem;
+    max-width: 800px;
+}
+
+.cta-section .service-mini-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 100px;
+}
+
+.cta-section .service-mini-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section .service-mini-icon {
+    font-size: 2rem;
+}
+
+.cta-section .service-mini-text {
+    font-size: 0.9rem;
+    color: #2c1810;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Анимация появления секции */
+.cta-section {
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 60px 0;
+    }
+    
+    .cta-section .section-title {
+        font-size: 2rem;
+    }
+    
+    .cta-section p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .cta-section .submit-btn {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .cta-section .services-preview {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .cta-section .service-mini-card {
+        min-width: 80px;
+        padding: 0.8rem;
+    }
+    
+    .cta-section .service-mini-icon {
+        font-size: 1.5rem;
+    }
+    
+    .cta-section .service-mini-text {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-section {
+        padding: 40px 0;
+    }
+    
+    .cta-section .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .cta-section .services-preview {
+        gap: 0.8rem;
+    }
+    
+    .cta-section .service-mini-card {
+        min-width: 70px;
+        padding: 0.5rem;
+    }
+}
+
+/* Альтернативный вариант с иконками в тексте (если нужен другой дизайн) */
+.cta-section .service-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.cta-section .highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #2c1810;
+    font-weight: 500;
+    background: rgba(212, 175, 55, 0.1);
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.cta-section .highlight-icon {
+    font-size: 1.2rem;
+}
+
+.cta-section .highlight-text {
+    font-size: 1rem;
+}
+
+/* Стили для декоративного разделителя */
+.cta-section .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.cta-section .divider-line {
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.cta-section .divider-icon {
+    color: #d4af37;
+    font-size: 1.2rem;
+}
+
+/* Если нужно добавить фоновый узор */
+.cta-section.pattern-bg {
+    background-image: 
+        linear-gradient(135deg, #f8f5f2 0%, #fff 100%),
+        repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.02) 0px, rgba(212, 175, 55, 0.02) 10px, transparent 10px, transparent 20px);
+}
+
+/* Для создания контраста с другими секциями */
+.cta-section + .partners-section {
+    margin-top: 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+/* Стили для недоступных товаров */
+
+/* Затемнение карточки */
+.product-card.out-of-stock {
+    opacity: 0.7;
+    filter: grayscale(0.5);
+    position: relative;
+    pointer-events: none;
+}
+
+/* Бейдж "Нет в наличии" */
+.product-card.out-of-stock::after {
+    content: 'Нет в наличии';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #dc3545;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    pointer-events: none;
+}
+
+/* Стили для кнопки добавления в корзину у недоступных товаров */
+.product-card.out-of-stock .add-to-cart {
+    background: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.product-card.out-of-stock .add-to-cart:hover {
+    background: #999;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Стили для недоступных товаров в списке */
+.product-list-item.out-of-stock {
+    opacity: 0.7;
+    filter: grayscale(0.5);
+    position: relative;
+}
+
+.product-list-item.out-of-stock::after {
+    content: 'Нет в наличии';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #dc3545;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.product-list-item.out-of-stock .add-to-cart,
+.product-list-item.out-of-stock .view-details {
+    background: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Стили для чекбокса "В наличии" */
+.filter-group .checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.filter-group .checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #d4af37;
+}
+
+.filter-group .checkbox-group span {
+    color: #2c1810;
+    font-size: 0.95rem;
+}

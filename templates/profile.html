@@ -19,7 +19,7 @@
         <li><a href="/">Главная</a></li>
         <li><a href="/catalog">Каталог</a></li>
         <li><a href="/about">О нас</a></li>
-        <li><a href="/contacts#services">Услуги</a></li>
+        <li><a href="/services">Услуги</a></li>
         <li><a href="/contacts">Контакты</a></li>
         <li><a href="/cart" class="cart-link">Корзина <span id="cart-count">0</span></a></li>
         <li><a href="/profile" class="active">Личный кабинет</a></li>
@@ -36,23 +36,23 @@
     <div class="profile-container">
       <aside class="profile-sidebar">
         <div class="profile-header">
-          <div class="profile-avatar">
-            <img src="/static/images/default-avatar.jpg" alt="Аватар">
+          <div class="profile-avatar" id="avatar-click" title="Сменить аватар" style="cursor:pointer;">
+            <img id="avatar-img" src="/static/images/default-avatar.jpg" alt="Аватар">
           </div>
           <h3 id="profile-name">Пользователь</h3>
           <p id="profile-email" style="word-break: break-word;"></p>
 
           <button id="logoutBtn" class="save-btn" style="margin-top: 10px; width: 100%;">Выйти</button>
-
-          
         </div>
 
         <nav class="profile-nav">
           <ul>
             <li><a href="#personal" class="nav-link active" onclick="showSection('personal')">Личные данные</a></li>
             <li><a href="#orders" class="nav-link" onclick="showSection('orders')">Мои заказы</a></li>
+            <!-- 
             <li><a href="#favorites" class="nav-link" onclick="showSection('favorites')">Избранное</a></li>
-            <li><a href="#addresses" class="nav-link" onclick="showSection('addresses')">Адреса доставки</a></li>
+            <li><a href="#addresses" class="nav-link" onclick="showSection('addresses')">Адреса доставки</a></li> 
+            -->
             <li><a href="#settings" class="nav-link" onclick="showSection('settings')">Настройки</a></li>
           </ul>
         </nav>
@@ -65,38 +65,37 @@
 
           <form class="profile-form" id="profileForm">
             <div class="form-row">
+              <div class="form-group">
+                <label for="last-name">Фамилия</label>
+                <input type="text" id="last-name" value="">
+              </div>
 
-                <div class="form-group">
-                  <label for="last-name">Фамилия</label>
-                  <input type="text" id="last-name" value="">
-                </div>
-
-                <div class="form-group">
-                  <label for="first-name">Имя</label>
-                  <input type="text" id="first-name" value="">
-                </div>
-
+              <div class="form-group">
+                <label for="first-name">Имя</label>
+                <input type="text" id="first-name" value="">
+              </div>
             </div>
-              <div class="form-group">
-                <label for="middle-name">Отчество</label>
-                <input type="text" id="middle-name" value="">
-              </div>
 
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" value="" disabled>
-                <small style="opacity:.7;">Email менять нельзя.</small>
-              </div>
+            <div class="form-group">
+              <label for="middle-name">Отчество</label>
+              <input type="text" id="middle-name" value="">
+            </div>
 
-              <div class="form-group">
-                <label for="phone">Телефон</label>
-                <input type="tel" id="phone" value="" placeholder="+79991234567">
-              </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" value="" disabled>
+              <small style="opacity:.7;">Email менять нельзя.</small>
+            </div>
 
-              <div class="form-group">
-                <label for="birthdate">Дата рождения</label>
-                <input type="date" id="birthdate" value="">
-              </div>
+            <div class="form-group">
+              <label for="phone">Телефон</label>
+              <input type="tel" id="phone" value="" placeholder="+79991234567">
+            </div>
+
+            <div class="form-group">
+              <label for="birthdate">Дата рождения</label>
+              <input type="date" id="birthdate" value="">
+            </div>
 
             <button type="submit" class="save-btn">Сохранить изменения</button>
           </form>
@@ -105,7 +104,11 @@
         <!-- Мои заказы -->
         <section id="orders" class="profile-section">
           <h2>Мои заказы</h2>
-          <p style="opacity:.75;">Пока заглушка. Дальше подключим заказы из БД.</p>
+          <p style="opacity:.75; margin-bottom: 12px;">
+            Здесь отображаются заказы, оформленные через корзину.
+          </p>
+
+          <div id="orders-loading" style="display:none; opacity:.75;">Загрузка заказов...</div>
           <div class="orders-list" id="orders-list"></div>
         </section>
 
@@ -165,14 +168,101 @@
   </div>
 </main>
 
+<!-- MODAL: детали заказа -->
+<div id="order-modal" style="
+  display:none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 5000;
+  padding: 40px 16px;
+  overflow:auto;
+">
+  <div style="
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 16px;
+    position: relative;
+  ">
+    <button id="order-modal-close" aria-label="close" style="
+      position:absolute;
+      top: 10px;
+      right: 10px;
+      border:none;
+      background: transparent;
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+    ">&times;</button>
+
+    <div id="order-modal-body"></div>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="container">
     <p>&copy; 2026 Антикварный магазин "Времена". Все права защищены.</p>
   </div>
 </footer>
 
+<!-- MODAL: смена аватара -->
+<div id="avatar-modal" style="
+  display:none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 7000;
+  padding: 40px 16px;
+  overflow:auto;
+">
+  <div style="
+    max-width: 520px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 16px;
+    position: relative;
+  ">
+    <button id="avatar-modal-close" aria-label="close" style="
+      position:absolute;
+      top: 10px;
+      right: 10px;
+      border:none;
+      background: transparent;
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+    ">&times;</button>
+
+    <h2 style="margin:0 0 12px 0; font-family:'Playfair Display', serif; color:#2c1810;">
+      Смена аватара
+    </h2>
+
+    <div style="display:flex; gap:14px; align-items:center; margin-bottom:14px;">
+      <img id="avatar-preview" src="/static/images/default-avatar.jpg" alt="preview"
+           style="width:96px; height:96px; border-radius:50%; object-fit:cover; border:1px solid rgba(0,0,0,.1);">
+      <div style="opacity:.8; line-height:1.4;">
+        <div>Форматы: PNG / JPG / WEBP</div>
+        <div>До 4MB</div>
+      </div>
+    </div>
+
+    <input id="avatar-file" type="file" accept="image/png,image/jpeg,image/webp" style="width:100%;">
+
+    <button id="avatar-upload-btn" class="save-btn" style="margin-top: 12px; width: 100%;">
+      Сохранить аватар
+    </button>
+
+    <small style="opacity:.7;">После сохранения аватар обновится сразу.</small>
+  </div>
+</div>
+
+
 <script src="/static/js/storage.js"></script>
 <script src="/static/js/profile.js"></script>
-<script src="/static/js/script.js"></script>
+
+
 </body>
 </html>

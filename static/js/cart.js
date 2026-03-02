@@ -173,15 +173,70 @@ function removeFromCart(productId) {
   DataStorage.toast("Товар удален из корзины", "success");
 }
 
-function proceedToCheckout() {
+async function proceedToCheckout() {
   if (!cart || cart.length === 0) {
     DataStorage.toast("Корзина пуста", "error");
     return;
   }
 
-  // Сейчас у тебя оформление заказа — заглушка.
-  // Позже сделаем POST /api/orders и возьмём user из сессии.
-  DataStorage.toast("Оформление заказа пока в разработке 🙂", "info");
+  // 1) проверка авторизации
+  try {
+    const meRes = await fetch("/api/auth/me", {
+      headers: { Accept: "application/json" },
+      credentials: "include",
+    });
+    const me = await meRes.json().catch(() => ({}));
+
+    if (!me?.authenticated) {
+      // DataStorage.toast("Войдите в аккаунт для оформления заказа", "info");
+      // сохраняем куда вернуться после логина
+      const next = encodeURIComponent("/cart");
+      window.location.href = `/login?next=${next}`;
+      return;
+    }
+  } catch (e) {
+    console.error(e);
+    DataStorage.toast("Не удалось проверить авторизацию", "error");
+    return;
+  }
+
+  // 2) создаём заказ
+  const payload = {
+    items: cart.map((i) => ({ id: Number(i.id), quantity: Number(i.quantity || 1) })),
+  };
+
+  try {
+    const res = await fetch("/api/orders", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (res.status === 401) {
+      // на случай если сессия истекла между проверкой и запросом
+      const next = encodeURIComponent("/cart");
+      window.location.href = `/login?next=${next}`;
+      return;
+    }
+
+    if (!res.ok) {
+      DataStorage.toast(data?.error || "Ошибка оформления заказа", "error");
+      return;
+    }
+
+    DataStorage.clearCart();
+    DataStorage.toast("Заказ оформлен ✅", "success");
+    window.location.href = "/profile#orders";
+  } catch (e) {
+    console.error(e);
+    DataStorage.toast("Сеть/сервер недоступны", "error");
+  }
 }
 
 // ------- helpers -------

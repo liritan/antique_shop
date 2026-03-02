@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Услуги - Антикварный магазин "Времена"</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/services.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <h1><a href="/" style="text-decoration: none; color: inherit;">Времена</a></h1>
+        <p>Антикварный магазин</p>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="/">Главная</a></li>
+        <li><a href="/catalog">Каталог</a></li>
+        <li><a href="/about">О нас</a></li>
+        <li><a href="/services" class="active">Услуги</a></li>
+        <li><a href="/contacts">Контакты</a></li>
+        <li><a href="/cart" class="cart-link">Корзина <span id="cart-count">0</span></a></li>
+        <li><a href="/profile">Личный кабинет</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main style="padding-bottom: 4rem;">
+  <!-- Hero -->
+  <section class="contacts-hero">
+    <div class="container">
+      <div class="contacts-hero-content">
+        <h1>Услуги</h1>
+        <p>Экспертиза, оценка, реставрация и сопровождение сделок — бережно и профессионально</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Услуги подробно -->
+  <section class="services-section">
+    <div class="container">
+      <h2 class="section-title">Что мы делаем</h2>
+
+      <div class="services-grid">
+        <div class="service-card">
+        
+          <h3>Экспертиза подлинности</h3>
+          <p>
+            Проверяем происхождение и атрибуцию предмета: стиль, техника, материалы, клейма, маркировки,
+            следы времени и вмешательств. По запросу подключаем внешних профильных специалистов.
+          </p>
+          <ul style="margin-top: 0.75rem; color:#666;">
+            <li>Предварительная экспертиза по фото (быстро)</li>
+            <li>Очная экспертиза в магазине (по записи)</li>
+            <li>Заключение для страховой/коллекции (по формату заказчика)</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+       
+          <h3>Оценка стоимости</h3>
+          <p>
+            Делаем рыночную оценку с учётом состояния, редкости, провенанса и спроса.
+            Объясняем вилку цен и стратегию продажи (быстро/максимально выгодно).
+          </p>
+          <ul style="margin-top: 0.75rem; color:#666;">
+            <li>Оценка для продажи</li>
+            <li>Оценка для наследства/страхования</li>
+            <li>Подбор аналогов по рынку</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+
+          <h3>Реставрация и консервация</h3>
+          <p>
+            Реставрация мебели, живописи, металла, керамики, стекла и предметов быта.
+            Всегда согласуем объём работ и принцип «не навреди».
+          </p>
+          <ul style="margin-top: 0.75rem; color:#666;">
+            <li>Мебель: укрепление, шпон, фурнитура</li>
+            <li>Живопись: чистка, укрепление красочного слоя</li>
+            <li>Металл/серебро: деликатная чистка, защита</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+         
+          <h3>Комиссия и выкуп</h3>
+          <p>
+            Помогаем продать предмет: фото/описание, подготовка, показ клиентам, переговоры.
+            Возможен выкуп, если предмет подходит под профиль магазина.
+          </p>
+          <ul style="margin-top: 0.75rem; color:#666;">
+            <li>Комиссия (консигнация) с договором</li>
+            <li>Выкуп (после экспертизы)</li>
+            <li>Сопровождение сделки и документов</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+         
+          <h3>Подбор в интерьер и консультации</h3>
+          <p>
+            Подбираем предметы под стиль интерьера/проекта, комплектуем витрины и пространства.
+            Консультации по коллекционированию и инвестициям в антиквариат.
+          </p>
+          <ul style="margin-top: 0.75rem; color:#666;">
+            <li>Подбор под бюджет и стилистику</li>
+            <li>Консультации для дизайнеров</li>
+            <li>Формирование коллекции</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+         
+          <h3>Упаковка, доставка, страхование</h3>
+          <p>
+            Организуем безопасную упаковку и доставку. Для крупных предметов — “белые перчатки”
+            и установка. По запросу — страхование на время перевозки.
+          </p>
+          <ul style="margin-top: 0.75rem; color:#666;">
+            <li>Москва: курьер/день-в-день</li>
+            <li>Россия: ТК 2–5 дней</li>
+            <li>Международная доставка (по согласованию)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как это работает -->
+  <section class="additional-info">
+    <div class="container">
+      <h2 class="section-title">Как проходит работа</h2>
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>1) Заявка</h3>
+          <ul>
+            <li>Опишите предмет и цель (оценка/реставрация/продажа)</li>
+            <li>Прикрепите фото (клейма, дефекты, общий вид)</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <h3>2) Предварительный ответ</h3>
+          <ul>
+            <li>Скажем, что можно сделать и какие сроки</li>
+            <li>Согласуем формат: онлайн или очно</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <h3>3) Результат</h3>
+          <ul>
+            <li>Экспертиза/оценка/план реставрации</li>
+            <li>При необходимости — договор (комиссия/выкуп)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Форма -->
+  <section class="contact-form-section" id="request">
+    <div class="container">
+      <h2 class="section-title">Оставить заявку на услугу</h2>
+
+      <div class="contact-form-container">
+        <form class="contact-form" id="serviceForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Ваше имя *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Телефон</label>
+              <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__">
+            </div>
+            <div class="form-group">
+              <label for="service_type">Услуга *</label>
+              <select id="service_type" name="service_type" required>
+                <option value="">Выберите услугу</option>
+                <option value="auth">Экспертиза подлинности</option>
+                <option value="valuation">Оценка стоимости</option>
+                <option value="restoration">Реставрация/консервация</option>
+                <option value="consignment">Комиссия/выкуп</option>
+                <option value="interior">Подбор в интерьер/консультация</option>
+                <option value="delivery">Упаковка/доставка</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Описание *</label>
+            <textarea id="message" name="message" rows="5" required
+              placeholder="Что за предмет, примерный период, размеры, состояние, что хотите сделать..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="files">Фотографии / документы</label>
+            <input type="file" id="files" name="files" multiple accept="image/*,.pdf,.doc,.docx">
+            <small>Максимальный размер файла: 5 МБ. Форматы: JPG, PNG, PDF, DOC, DOCX</small>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" id="privacy" name="privacy" required>
+              <span>Я согласен с <a href="/privacy">политикой конфиденциальности</a> и даю согласие на обработку персональных данных *</span>
+            </label>
+          </div>
+
+          <button type="submit" class="submit-btn">Отправить заявку</button>
+        </form>
+
+        <div class="contact-info-side">
+          <div class="info-card">
+            <h3>Что приложить, чтобы мы ответили быстрее</h3>
+            <ul>
+              <li>Общий вид предмета (2–3 фото)</li>
+              <li>Клейма/маркировки крупным планом</li>
+              <li>Дефекты и места реставрации</li>
+              <li>Размеры и материал (если знаете)</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Срок ответа</h3>
+            <p><strong>Email:</strong> до 24 часов</p>
+            <p><strong>WhatsApp/Telegram:</strong> до 2 часов</p>
+            <p><em>Очная экспертиза и реставрация — по записи.</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Антикварный магазин "Времена". Все права защищены.</p>
+  </div>
+</footer>
+
+<script src="/static/js/services.js"></script>
+</body>
+</html>
